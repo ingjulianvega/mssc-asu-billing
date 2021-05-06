@@ -16,6 +16,6 @@ public class Billing implements Serializable {
     static final long serialVersionUID = 8985294312046126138L;
 
     private String paymentMethod;
-    private double quantity;
+    private int quantity;
 
 }

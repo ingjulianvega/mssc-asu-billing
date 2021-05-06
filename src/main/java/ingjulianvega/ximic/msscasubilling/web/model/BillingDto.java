@@ -18,6 +18,6 @@ public class BillingDto implements Serializable {
 
     private UUID id;
     private String paymentMethod;
-    private double quantity;
+    private int quantity;
 
 }
