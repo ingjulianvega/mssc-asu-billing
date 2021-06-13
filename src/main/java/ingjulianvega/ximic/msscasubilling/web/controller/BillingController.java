@@ -21,8 +21,8 @@ public class BillingController implements BillingI {
     private final BillingService billingService;
 
     @Override
-    public ResponseEntity<BillingList> get() {
-        return new ResponseEntity<>(billingService.get(), HttpStatus.OK);
+    public ResponseEntity<BillingList> get(Boolean usingCache) {
+        return new ResponseEntity<>(billingService.get(usingCache), HttpStatus.OK);
     }
 
     @Override

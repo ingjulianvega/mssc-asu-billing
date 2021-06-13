@@ -24,9 +24,9 @@ public class BillingServiceImpl implements BillingService {
     private final BillingMapper billingMapper;
 
 
-    @Cacheable(cacheNames = "billingListCache")
+    @Cacheable(cacheNames = "billingListCache", condition = "#usingCache == false")
     @Override
-    public BillingList get() {
+    public BillingList get(Boolean usingCache) {
         log.debug("get()...");
         return BillingList
                 .builder()

@@ -8,7 +8,7 @@ import ingjulianvega.ximic.msscasubilling.web.model.BillingList;
 import java.util.UUID;
 
 public interface BillingService {
-    BillingList get();
+    BillingList get(Boolean usingCache);
 
     BillingDto getById(UUID id);
 

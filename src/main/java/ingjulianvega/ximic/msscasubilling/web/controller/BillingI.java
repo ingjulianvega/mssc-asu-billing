@@ -33,7 +33,7 @@ public interface BillingI {
     @RequestMapping(value = "/",
             produces = {"application/json"},
             method = RequestMethod.GET)
-    ResponseEntity<BillingList> get();
+    ResponseEntity<BillingList> get(@Parameter(in = ParameterIn.QUERY, description = "The using of cache", required = true, schema = @Schema()) Boolean usingCache);
 
     @Operation(summary = "Endpoint to get the information of a billing given the id", description = "Returns a billing", tags = {"billing"})
     @ApiResponses(value = {
