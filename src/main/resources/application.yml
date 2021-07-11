@@ -36,10 +36,7 @@ logging:
     root: DEBUG
 #Exceptions
 billing:
-  success: The operation was successful.
-  prefix: 'BILLING'
-  error:
-    general: There was an unexpected error. Please try again.
+  api: @artifactId@
 #Eureka
 eureka:
   client:

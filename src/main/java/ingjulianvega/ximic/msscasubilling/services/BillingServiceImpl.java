@@ -11,6 +11,7 @@ import ingjulianvega.ximic.msscasubilling.web.model.BillingList;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -40,7 +41,14 @@ public class BillingServiceImpl implements BillingService {
         log.debug("getById()...");
         return billingMapper.billingEntityToBillingDto(
                 billingRepository.findById(id)
-                        .orElseThrow(() -> new BillingException(ErrorCodeMessages.BILLING_NOT_FOUND, "")));
+                        .orElseThrow(() -> BillingException
+                .builder()
+                .httpStatus(HttpStatus.BAD_REQUEST)
+                .apiCode(ErrorCodeMessages.BILLING_NOT_FOUND_API_CODE)
+                .error(ErrorCodeMessages.BILLING_NOT_FOUND_ERROR)
+                .message(ErrorCodeMessages.BILLING_NOT_FOUND_MESSAGE)
+                .solution(ErrorCodeMessages.BILLING_NOT_FOUND_SOLUTION)
+                .build()));
     }
 
     @Override
@@ -60,7 +68,14 @@ public class BillingServiceImpl implements BillingService {
     public void updateById(UUID id, Billing billing) {
         log.debug("updateById...");
         BillingEntity billingEntity = billingRepository.findById(id)
-                .orElseThrow(() -> new BillingException(ErrorCodeMessages.BILLING_NOT_FOUND, ""));
+                .orElseThrow(() -> BillingException
+                        .builder()
+                        .httpStatus(HttpStatus.BAD_REQUEST)
+                        .apiCode(ErrorCodeMessages.BILLING_NOT_FOUND_API_CODE)
+                        .error(ErrorCodeMessages.BILLING_NOT_FOUND_ERROR)
+                        .message(ErrorCodeMessages.BILLING_NOT_FOUND_MESSAGE)
+                        .solution(ErrorCodeMessages.BILLING_NOT_FOUND_SOLUTION)
+                        .build());
 
         billingEntity.setPaymentMethod(billing.getPaymentMethod());
         billingEntity.setQuantity(billing.getQuantity());
