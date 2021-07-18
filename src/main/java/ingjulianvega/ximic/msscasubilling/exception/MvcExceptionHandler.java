@@ -1,4 +1,4 @@
-package ingjulianvega.ximic.msscasubilling.web.controller;
+package ingjulianvega.ximic.msscasubilling.exception;
 
 import ingjulianvega.ximic.msscasubilling.configuration.BillingParameters;
 import ingjulianvega.ximic.msscasubilling.configuration.ErrorCodeMessages;
